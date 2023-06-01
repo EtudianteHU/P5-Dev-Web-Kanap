@@ -3,8 +3,9 @@
 
 const url = new URL(window.location); // permet créer un objet "URL" à partir de "window.location" => window.location contient l'URL qui est dans la barre d'adresse du navigateur
 
-
+console.log(url)
 const params = new URLSearchParams(url.search); // ici ça permet de créer un objet de type URLSearchParams qui va permettre de récupérer des paramètres qui sont dans l'URL
+
 const id = params.get('id') // permet de récupérer la valeur de la propriété "id" depuis l'URL (http://127.0.0.1:5500/front/html/product.html?id=a557292fe5814ea2b15c6ef4bd73ed83) ici, en faisait un param.get('id'), on récupére la valeur qui vient après le = c'est à dire "a557292fe5814ea2b15c6ef4bd73ed83" puis on stocke le résultat dans une constante grace au "const id = "
 
 
@@ -14,11 +15,13 @@ async function getProduct() {
     // si on ne met pas d'await, la suite du code va etre exécutée meme si on n'a pas encore reçu la réponse
     // Le await permet de bloquer l'exécution tant que l'on n'a pas de réponse
     // A chaque fois que l'on une opération asynchrone, on va généralement utiliser un async await pour bloquer l'exécution
+    console.log(data)
     const product = await data.json();
+    console.log(product);
     return product;
     // logs [{ name: 'Joker'}, { name: 'Batman' }]
 }
-// on récupére un objet 
+
 const product = await getProduct() /* on récupére un objet {
     "colors": [
         "Pink",
@@ -36,18 +39,17 @@ const product = await getProduct() /* on récupére un objet {
 // pour récupérer une valeur d'une propriété, on utilise la sytnaxe suivante :
 // nomDeMaVariable.nomDeMaPropriete
 // Par ex: pour récupérer le prix, on fait product.price => la valeur retournée sera 1499
+console.log('1er console log', product.colors)
 
-
-// Récupération de l'élément #title dans l'HTML
 const nameContainer = document.querySelector('#title')
+console.log(nameContainer)
 nameContainer.innerHTML = product.name
-// Récupération de l'élément  #price dans l'HTML
 const priceContainer = document.querySelector('#price')
+console.log(priceContainer)
 priceContainer.innerHTML = product.price
-// Récupération de l'élément #description dans L'HTML
 const descriptionContainer = document.querySelector('#description') // le querySelector a permis de récupérer l'élément #description dans l'HTML
+console.log(descriptionContainer)
 descriptionContainer.innerHTML = product.description // le innerHTML permet de remplacer de contenu de l'élément par celui qui est sur la droite après le égal (ici la valeur de la propriété "description")
-// Récupération de l'élément #colors dans L'HTML
 const optionContainer = document.querySelector('#colors')
 
 
@@ -56,7 +58,7 @@ const optionContainer = document.querySelector('#colors')
 // dans notre exemple, element sera d'abord égal à "Pink", puis lors de la 2nde itération, il sera égal à White
 product.colors.forEach((element) => {
     // le + permet de faire une concaténation, c'est à dire de conserver les données que l'on a ajoutée lors des précédentes itérations. Si on ne le met pas, alors notre liste déroulante que la dernière couleur et pas l'ensemble des couelurs
-
+    console.log('couleur courante : ', element)
     optionContainer.innerHTML += ` <option value="${element}">${element}</option>`
 })
 
@@ -68,10 +70,8 @@ colors.forEach((element) => {
     optionContainer.innerHTML = ` <option value="${element}">${element}</option>`
 })*/
 
-
-// Récupération de l'élément .item__img dans L'HTML
 const imageContainer = document.querySelector('.item__img')
-
+console.log(imageContainer)
 imageContainer.innerHTML = ` <img src="${product.imageUrl}" alt="${product.altTxt}">`
 
 const btnSelector = document.querySelector('#addToCart')
@@ -87,9 +87,10 @@ btnSelector.addEventListener('click', (event) => {
     }
     const panierInString = localStorage.getItem('panier') || '[]' // soit on récupère la valeur du panier dans le local storage, soit on met un tableau vide
 
+    console.log(panierInString)
     const panierObject = JSON.parse(panierInString) // meme chose :  JSON.parse(localStorage.getItem('panier'))
 
-
+    console.log(panierObject)
 
     const productFound = panierObject.find((product) => product.id === id) // la méthode fin retourne "undefined" si l'objet n'a pas été trouvé, ou l'objet si elle l'a trouvé
     if (productFound === undefined) {

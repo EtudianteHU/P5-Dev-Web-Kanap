@@ -3,17 +3,16 @@
 // 3ème étape => faire un querySelector pour récupérer le conteneur dans lequel on va mettre les produits (.cart__items)
 // utiliser un forEach sur ce tableau du panier, afin les différents produits du panier.  => comme sur la page d'accuiel, innerHTML (s'inspirer des lignes 13 à 28 du fifchier index.js)
 // 5eme étape : faire la somme des prix => quantité * prix pour chaque produit (le prix est récupéré dans le json => attribut "price")
-
+console.log('FICHIER PANIER')
 async function getProduct(id) {
   const data = await fetch(`http://localhost:3000/api/products/${id}`);
   const product = await data.json();
   return product;
 }
-//Récupérer le contenu du panier
-const panierInString = localStorage.getItem('panier')
-// Convertir la chaine de caractère en json -JSON.parse
-const panierObject = JSON.parse(panierInString)
 
+const panierInString = localStorage.getItem('panier')
+const panierObject = JSON.parse(panierInString)
+console.log(panierObject)
 
 const contenuItem = document.querySelector('#cart__items')
 
@@ -24,7 +23,9 @@ let totalQuantity = 0
 let totalPrice = 0
 
 await Promise.all(panierObject.map(async (panier, index) => {
-  const product = await getProduct(panier.id)SS
+  const product = await getProduct(panier.id)
+  console.log('contenu du product', product)
+  console.log('contenu de panier', panier)
 
   contenuItem.innerHTML += ` <article class="cart__item" data-id="${panier.id}" data-color="${panier.color}">
     <div class="cart__item__img">
@@ -70,7 +71,7 @@ inputsQuantity.forEach((input) => {
     panierObject.forEach(product => { quantity += product.quantity })
     totalQuantityPanier.innerHTML = quantity
     localStorage.setItem("panier", JSON.stringify(panierObject))
-
+    console.log("ProductFound", productFound)
 
 
     let price = 0
@@ -90,7 +91,7 @@ inputsQuantity.forEach((input) => {
     // on va mettre à jour la quantité dans le localStorage (objet panierObject => rechercher la bonne ligne avec la méthode find (ex: dans la page product), puis un efois que l'on a récupéré le produit, on met à jour le champ "quantité" et on sauvegarde les modification localStorage.setItem)
     // on va mettre à jour la quantité dans la ligne total (mettre à jour la quantité dans  totalQuantityPanier.inerhtml et totalPricePanier)
     // et on va mettre à jour le prix (total et pour le produit)
-
+    console.log(event)
   })
 
 
@@ -106,24 +107,27 @@ inputsQuantity.forEach((input) => {
 const deleteLinks = document.querySelectorAll('.deleteItem')
 
 deleteLinks.forEach((link) => {
+  console.log('on rentre dans le foreach')
   link.addEventListener('click', (event) => {
+    console.log('ON rentre dans l\'event listener')
     const dom = event.target
     const article = dom.closest('article')
     const id = article.getAttribute('data-id')
     const color = article.getAttribute('data-color')
 
-
+    console.log('==>PRODUCT', id, color)
     const filteredProducts = panierObject.filter((panier) => panier.id !== id && panier.color !== color)
 
     localStorage.setItem("panier", JSON.stringify(filteredProducts))
 
     const section = article.parentElement
-
+    console.log('===>', section, article.parentElement)
     section.removeChild(article)
     // calcul quantité totale
     let quantity = 0
     panierObject.forEach(product => { quantity += product.quantity })
     totalQuantityPanier.innerHTML = quantity
+    console.log("ProductFound", productFound)
 
 
     // calcul prix

@@ -68,8 +68,6 @@ colors.forEach((element) => {
     optionContainer.innerHTML = ` <option value="${element}">${element}</option>`
 })*/
 
-
-// Récupération de l'élément .item__img dans L'HTML
 const imageContainer = document.querySelector('.item__img')
 
 imageContainer.innerHTML = ` <img src="${product.imageUrl}" alt="${product.altTxt}">`

@@ -47,7 +47,6 @@ priceContainer.innerHTML = product.price
 // Récupération de l'élément #description dans L'HTML
 const descriptionContainer = document.querySelector('#description') // le querySelector a permis de récupérer l'élément #description dans l'HTML
 descriptionContainer.innerHTML = product.description // le innerHTML permet de remplacer de contenu de l'élément par celui qui est sur la droite après le égal (ici la valeur de la propriété "description")
-// Récupération de l'élément #colors dans L'HTML
 const optionContainer = document.querySelector('#colors')
 
 
@@ -68,8 +67,6 @@ colors.forEach((element) => {
     optionContainer.innerHTML = ` <option value="${element}">${element}</option>`
 })*/
 
-
-// Récupération de l'élément .item__img dans L'HTML
 const imageContainer = document.querySelector('.item__img')
 
 imageContainer.innerHTML = ` <img src="${product.imageUrl}" alt="${product.altTxt}">`

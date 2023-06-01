@@ -9,6 +9,11 @@ const products = await getProducts();
 const container = document.querySelector('.items') // document.querySelector('#items')
 
 products.forEach((product, index) => {
+  console.log('itération n°' + index)
+  console.log('on fait unu tour de boucle')
+  console.log('notre variable contient les données', product)
+  console.log('le prix du produit est', product.price)
+  console.log('le nom du produit est', product.name)
   container.innerHTML += `<a href="./product.html?id=${product._id}">
     <article>
       <img src="${product.imageUrl}" alt="${product.altTxt}">

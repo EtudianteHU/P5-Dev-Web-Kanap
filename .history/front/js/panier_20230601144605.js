@@ -11,7 +11,6 @@ async function getProduct(id) {
 }
 //Récupérer le contenu du panier
 const panierInString = localStorage.getItem('panier')
-// Convertir la chaine de caractère en json -JSON.parse
 const panierObject = JSON.parse(panierInString)
 
 
