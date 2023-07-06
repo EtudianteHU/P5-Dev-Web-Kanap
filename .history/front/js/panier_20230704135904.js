@@ -195,7 +195,7 @@ function isEmailInvalid() {
   const email = document.querySelector("email")
   const regex = /^  ([A - Za - z] | [0 - 9]) + $/
   if (regex.test(email) === false) {
-    alert('Please enter valid email')
+    alert("Please enter valid email")
     return true
   }
   return false
@@ -207,7 +207,7 @@ function isFormInvalid() {
   inputs.forEach(
     (input) => {
       if (input.value === "") {
-        alert('Please fill all the fields')
+        alert("Please fill all the fields")
         return true
       }
       return false

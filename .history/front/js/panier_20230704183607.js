@@ -207,7 +207,7 @@ function isFormInvalid() {
   inputs.forEach(
     (input) => {
       if (input.value === "") {
-        alert('Please fill all the fields')
+        alert("Please fill all the fields")
         return true
       }
       return false

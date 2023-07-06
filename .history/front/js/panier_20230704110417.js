@@ -11,6 +11,7 @@ async function getProduct(id) {
 }
 //Récupérer le contenu du panier
 const panierInString = localStorage.getItem('panier')
+// Convertir la chaine de caractère en json -JSON.parse
 const panierObject = JSON.parse(panierInString)
 
 
@@ -23,7 +24,7 @@ let totalQuantity = 0
 let totalPrice = 0
 
 await Promise.all(panierObject.map(async (panier, index) => {
-  const product = await getProduct(panier.id)SS
+  const product = await getProduct(panier.id)
 
   contenuItem.innerHTML += ` <article class="cart__item" data-id="${panier.id}" data-color="${panier.color}">
     <div class="cart__item__img">
@@ -142,6 +143,7 @@ deleteLinks.forEach((link) => {
 
 const orderbutton = document.querySelector("#order")
 orderbutton.addEventListener('click', (e) => submitForm(e))
+// Création de l’objet du nouvelle contact.
 function makeRequestBody() {
   const form = document.querySelector(".cart__order__form")
   const firstName = form.elements.firstName.value
@@ -187,4 +189,26 @@ function submitForm(e) {
       window.location = `confirmation.html?orderId=${data.orderId}`
     }))
     .catch((data) => console.log(data))
+}
+function isEmailInvalid() {
+  const email = document.querySelector("email")
+  const regex =^ / ([A - Za - z] | [0 - 9]) + $/
+  if (email.value === "") {
+    alert("Please enter your email")
+    return true
+  }
+  return false
+}
+
+function isFormInvalid() {
+  const form = document.querySelector(".cart__order__form")
+  const inputs = form.querySelectorAll("input")
+  inputs.forEach(
+    (input) => {
+      if (input.value === "") {
+        alert("Please fill all the fields")
+        return true
+      }
+      return false
+    })
 }

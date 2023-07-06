@@ -14,7 +14,7 @@ const panierInString = localStorage.getItem('panier')
 // Convertir la chaine de caractère en json -JSON.parse
 const panierObject = JSON.parse(panierInString)
 
-// récupérer le conteneur dans lequel on va mettre les produits
+//récupérer le conteneur dans lequel on va mettre les produits
 const contenuItem = document.querySelector('#cart__items')
 
 const totalQuantityPanier = document.querySelector('#totalQuantity')
@@ -55,7 +55,7 @@ await Promise.all(panierObject.map(async (panier, index) => {
 
 }))
 
-// on va mettre à jour la quantité  et le prix dans la ligne total
+
 const inputsQuantity = document.querySelectorAll('.itemQuantity')
 inputsQuantity.forEach((input) => {
   input.addEventListener('change', (event) => {
@@ -102,7 +102,7 @@ inputsQuantity.forEach((input) => {
   // faire le add event listener sur le bouton de validation
 })
 
-// on  va supprimer le produit 
+// on supprime le produit 
 const deleteLinks = document.querySelectorAll('.deleteItem')
 
 deleteLinks.forEach((link) => {
@@ -195,7 +195,7 @@ function isEmailInvalid() {
   const email = document.querySelector("email")
   const regex = /^  ([A - Za - z] | [0 - 9]) + $/
   if (regex.test(email) === false) {
-    alert('Please enter valid email')
+    alert("Please enter valid email")
     return true
   }
   return false
@@ -207,7 +207,7 @@ function isFormInvalid() {
   inputs.forEach(
     (input) => {
       if (input.value === "") {
-        alert('Please fill all the fields')
+        alert("Please fill all the fields")
         return true
       }
       return false

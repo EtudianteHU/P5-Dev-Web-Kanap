@@ -14,7 +14,7 @@ const panierInString = localStorage.getItem('panier')
 // Convertir la chaine de caractère en json -JSON.parse
 const panierObject = JSON.parse(panierInString)
 
-// récupérer le conteneur dans lequel on va mettre les produits
+
 const contenuItem = document.querySelector('#cart__items')
 
 const totalQuantityPanier = document.querySelector('#totalQuantity')
@@ -55,7 +55,7 @@ await Promise.all(panierObject.map(async (panier, index) => {
 
 }))
 
-// on va mettre à jour la quantité  et le prix dans la ligne total
+
 const inputsQuantity = document.querySelectorAll('.itemQuantity')
 inputsQuantity.forEach((input) => {
   input.addEventListener('change', (event) => {
@@ -102,7 +102,7 @@ inputsQuantity.forEach((input) => {
   // faire le add event listener sur le bouton de validation
 })
 
-// on  va supprimer le produit 
+
 const deleteLinks = document.querySelectorAll('.deleteItem')
 
 deleteLinks.forEach((link) => {
@@ -163,7 +163,7 @@ function makeRequestBody() {
   }
   return body
 }
-// on récupére l'identifiant de chaque produit
+
 function getIdsFromCache() {
   const numberOfProducts = panierObject.length
   const ids = []
@@ -173,10 +173,11 @@ function getIdsFromCache() {
   }
   return ids
 }
-// on redirige vers une autre page
+
 function submitForm(e) {
   e.preventDefault()
   if (cart__items.length === 0) alert('Please select items to buy')
+  If(isEmailInvalid() return)
   const body = makeRequestBody()
   fetch("http://localhost:3000/api/products/order", {
     method: "POST",
@@ -190,24 +191,14 @@ function submitForm(e) {
     }))
     .catch((data) => console.log(data))
 }
-// validation de l'email
-function isEmailInvalid() {
-  const email = document.querySelector("email")
-  const regex = /^  ([A - Za - z] | [0 - 9]) + $/
-  if (regex.test(email) === false) {
-    alert('Please enter valid email')
-    return true
-  }
-  return false
-}
-// validation de données
+
 function isFormInvalid() {
   const form = document.querySelector(".cart__order__form")
   const inputs = form.querySelectorAll("input")
   inputs.forEach(
     (input) => {
       if (input.value === "") {
-        alert('Please fill all the fields')
+        alert("Please fill all the fields")
         return true
       }
       return false

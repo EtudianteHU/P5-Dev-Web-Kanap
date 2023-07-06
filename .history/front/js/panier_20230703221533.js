@@ -24,7 +24,7 @@ let totalQuantity = 0
 let totalPrice = 0
 
 await Promise.all(panierObject.map(async (panier, index) => {
-  const product = await getProduct(panier.id)SS
+  const product = await getProduct(panier.id)
 
   contenuItem.innerHTML += ` <article class="cart__item" data-id="${panier.id}" data-color="${panier.color}">
     <div class="cart__item__img">
@@ -143,6 +143,7 @@ deleteLinks.forEach((link) => {
 
 const orderbutton = document.querySelector("#order")
 orderbutton.addEventListener('click', (e) => submitForm(e))
+// Création de l’objet du nouvelle contact.
 function makeRequestBody() {
   const form = document.querySelector(".cart__order__form")
   const firstName = form.elements.firstName.value
@@ -176,6 +177,7 @@ function getIdsFromCache() {
 function submitForm(e) {
   e.preventDefault()
   if (cart__items.length === 0) alert('Please select items to buy')
+  If(isFormInvalid()) return
   const body = makeRequestBody()
   fetch("http://localhost:3000/api/products/order", {
     method: "POST",
@@ -188,4 +190,17 @@ function submitForm(e) {
       window.location = `confirmation.html?orderId=${data.orderId}`
     }))
     .catch((data) => console.log(data))
+}
+
+function isFormInvalid() {
+  const form = document.querySelector(".cart__order__form")
+  const inputs = form.querySelectorAll("input")
+  inputs.forEach(
+    (input) => {
+      if (input.value === "") {
+        alert("Please fill all the fields")
+        return true
+      }
+      return false
+    })
 }
