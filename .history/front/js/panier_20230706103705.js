@@ -193,7 +193,7 @@ function submitForm(e) {
 // validation de l'email
 function isEmailInvalid() {
   const email = document.querySelector("email")
-  const regex = /^([A-Za-z0-9_-.])+@([A-Za-z0-9_-.])+.([A-Za-z]{2,4})$/
+  const regex = /^ [ AZ 0-9 ._%+- ] + @ [ AZ 0-9 . - ] + \. [ AZ ] {2,} $/
   if (regex.test(email) === false) {
     alert('Please enter valid email')
     return true
