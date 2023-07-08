@@ -86,7 +86,6 @@ btnSelector.addEventListener('click', (event) => {
         return; // permet de ne pas exécuter la suite du code, comme il y a une erreur
     }
 
-
     const panierInString = localStorage.getItem('panier') || '[]' // soit on récupère la valeur du panier dans le local storage, soit on met un tableau vide
 
     const panierObject = JSON.parse(panierInString) // meme chose :  JSON.parse(localStorage.getItem('panier'))
@@ -96,7 +95,7 @@ btnSelector.addEventListener('click', (event) => {
     const productFound = panierObject.find((product) => product.id === id) // la méthode fin retourne "undefined" si l'objet n'a pas été trouvé, ou l'objet si elle l'a trouvé
     const colorFound = panierObject.find((product) => product.color === selectedColor)
     if (colorFound === undefined) {
-        panierObject.push(selectedColor)
+        alert('Veuillez selectionner une color')
     } else {
         colorFound.color = colorFound.color + selectedColor
     }

@@ -97,8 +97,7 @@ btnSelector.addEventListener('click', (event) => {
     const colorFound = panierObject.find((product) => product.color === selectedColor)
     if (colorFound === undefined) {
         panierObject.push(selectedColor)
-    } else {
-        colorFound.color = colorFound.color + selectedColor
+
     }
     if (productFound === undefined) {
         // ajouter le produit au panier
