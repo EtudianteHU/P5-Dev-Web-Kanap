@@ -85,7 +85,7 @@ btnSelector.addEventListener('click', (event) => {
         alert('Veuillez saisir une quantité et une color')
         return; // permet de ne pas exécuter la suite du code, comme il y a une erreur
     } else {
-        (quantityNumber != null && selectedColor == null)
+        (quantityNumber != null && selectedColor === undefined)
         alert('Veuillez selectionner une color')
         return;
     }

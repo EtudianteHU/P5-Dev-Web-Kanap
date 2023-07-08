@@ -90,7 +90,7 @@ btnSelector.addEventListener('click', (event) => {
         return;
     }
 
-
+    con
 
     const panierInString = localStorage.getItem('panier') || '[]' // soit on récupère la valeur du panier dans le local storage, soit on met un tableau vide
 

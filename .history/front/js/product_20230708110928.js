@@ -87,7 +87,6 @@ btnSelector.addEventListener('click', (event) => {
     } else {
         (quantityNumber != null && selectedColor == null)
         alert('Veuillez selectionner une color')
-        return;
     }
 
 

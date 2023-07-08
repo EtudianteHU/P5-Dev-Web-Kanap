@@ -88,6 +88,8 @@ btnSelector.addEventListener('click', (event) => {
         (quantityNumber != null && selectedColor == null)
         alert('Veuillez selectionner une color')
         return;
+    }else {
+        alert(La produit a été commandé)
     }
 
 

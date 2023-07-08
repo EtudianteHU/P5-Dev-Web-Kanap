@@ -82,10 +82,10 @@ btnSelector.addEventListener('click', (event) => {
     const quantityNumber = parseInt(quantityString) // parseInt =< convertit une chaine de caractère en  nombre entier
 
     if (quantityNumber <= 0 || quantityNumber > 100 && selectedColor === undefined) { // si la qté est inférieure à 0 ou supérieure à 100, on affiche un mesage d'erreur
-        alert('Veuillez saisir une quantité et une color')
-        return; // permet de ne pas exécuter la suite du code, comme il y a une erreur
+        alert('Veuillez saisir une quantité ')
+        // permet de ne pas exécuter la suite du code, comme il y a une erreur
     } else {
-        (quantityNumber != null && selectedColor == null)
+        (quantityNumber != null && selectedColor === undefined)
         alert('Veuillez selectionner une color')
         return;
     }
@@ -114,7 +114,6 @@ btnSelector.addEventListener('click', (event) => {
         // mettre à jour la quantité
 
         productFound.quantity = productFound.quantity + quantityNumber // on ajoute la nouvelle quantité sélectionnée à l'ancienne
-
     }
 
 
