@@ -94,7 +94,12 @@ btnSelector.addEventListener('click', (event) => {
 
 
     const productFound = panierObject.find((product) => product.id === id && product.color === selectedColor) // la méthode fin retourne "undefined" si l'objet n'a pas été trouvé, ou l'objet si elle l'a trouvé
-
+    const colorFound = panierObject.find((product) => product.color === selectedColor)
+    if (colorFound === undefined) {
+        panierObject.push(selectedColor)
+    } else {
+        colorFound.color = colorFound.color + selectedColor
+    }
     if (productFound === undefined) {
         // ajouter le produit au panier
 
