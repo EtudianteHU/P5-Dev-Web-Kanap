@@ -80,7 +80,7 @@ btnSelector.addEventListener('click', (event) => {
     const selectedColor = document.querySelector('#colors').value
     const quantityString = document.querySelector('#quantity').value
     const quantityNumber = parseInt(quantityString) // parseInt =< convertit une chaine de caractère en  nombre entier
-    if (quantityNumber <= 0 || quantityNumber > 100 && selectedColor === undefined) {
+    if ((quantityNumber <= 0 || quantityNumber > 100 && selectedColor === undefined) {
         // si la qté est inférieure à 0 ou supérieure à 100, on affiche un mesage d'erreur
         alert('Veuillez saisir une quantité et une color')
         return; // permet de ne pas exécuter la suite du code, comme il y a une erreur
@@ -88,42 +88,42 @@ btnSelector.addEventListener('click', (event) => {
         (quantityNumber != null && selectedColor === undefined)
         alert('Veuillez selectionner une color')
         return;
+    })
+
+
+
+
+const panierInString = localStorage.getItem('panier') || '[]' // soit on récupère la valeur du panier dans le local storage, soit on met un tableau vide
+
+const panierObject = JSON.parse(panierInString) // meme chose :  JSON.parse(localStorage.getItem('panier'))
+
+
+
+const productFound = panierObject.find((product) => product.id === id && product.color === selectedColor) // la méthode fin retourne "undefined" si l'objet n'a pas été trouvé, ou l'objet si elle l'a trouvé
+
+if (productFound === undefined) {
+    // ajouter le produit au panier
+
+    const productToAdd = {
+        id: id,
+        color: selectedColor,
+        quantity: quantityNumber,
     }
+    // push permet d'ajouter un élément à un tableau
+    panierObject.push(productToAdd)
+} else {
+    // mettre à jour la quantité
 
-
-
-
-    const panierInString = localStorage.getItem('panier') || '[]' // soit on récupère la valeur du panier dans le local storage, soit on met un tableau vide
-
-    const panierObject = JSON.parse(panierInString) // meme chose :  JSON.parse(localStorage.getItem('panier'))
-
-
-
-    const productFound = panierObject.find((product) => product.id === id && product.color === selectedColor) // la méthode fin retourne "undefined" si l'objet n'a pas été trouvé, ou l'objet si elle l'a trouvé
-
-    if (productFound === undefined) {
-        // ajouter le produit au panier
-
-        const productToAdd = {
-            id: id,
-            color: selectedColor,
-            quantity: quantityNumber,
-        }
-        // push permet d'ajouter un élément à un tableau
-        panierObject.push(productToAdd)
-    } else {
-        // mettre à jour la quantité
-
-        productFound.quantity = productFound.quantity + quantityNumber // on ajoute la nouvelle quantité sélectionnée à l'ancienne
-
-    }
-
-
-    localStorage.setItem('panier', JSON.stringify(panierObject)) // JSON.stringiy permet de convertir un objet/tableau en chaine de caractères. C'est l'inverse de JSON.parse
-    alert('La Produit a été commandé')
+    productFound.quantity = productFound.quantity + quantityNumber // on ajoute la nouvelle quantité sélectionnée à l'ancienne
 
 }
-)
+
+
+localStorage.setItem('panier', JSON.stringify(panierObject)) // JSON.stringiy permet de convertir un objet/tableau en chaine de caractères. C'est l'inverse de JSON.parse
+
+
+    }
+})
 
 
 
