@@ -239,9 +239,9 @@ function isCityInValid() {
   const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(city) === false || city === "") {
     alert('Please enter valid ville')
-    return true
+    return false
   }
-  return false
+  return true
 }
 // validation de données
 function isFormInValid() {

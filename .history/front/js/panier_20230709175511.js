@@ -155,9 +155,9 @@ function makeRequestBody() {
     contact: {
       firstName: isPrenomInValid(),
       lastName: isNomInValid(),
-      address: isAdressInValid(),
-      city: isCityInValid(),
-      email: isEmailInValid()
+      address: address,
+      city: city,
+      email: email
     },
     products: getIdsFromCache()
   }
@@ -196,22 +196,20 @@ function submitForm(e) {
 function isPrenomInValid() {
   const firstName = document.querySelector("#firstName")
   const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-  if (regex.test(firstName) === false || firstName === "") {
+  if (regex.test(firstName) === false) {
     alert('Please enter valid prenom')
-    return true
+    return;
   }
-  return false
 }
 
 
-function isNomInValid() {
+fonction isNomInValid(){
   const lastName = document.querySelector("#lastName")
   const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(lastName) === false || lastName === "") {
     alert('Please enter valid Nom')
-    return true
+    return;
   }
-  return false
 }
 // validation de l'email
 function isEmailInValid() {
@@ -219,9 +217,8 @@ function isEmailInValid() {
   const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
   if (regex.test(email) === false || email === "") {
     alert('Please enter valid email')
-    return true
+    return;
   }
-  return false
 }
 // validation de l'address
 function isAdressInValid() {
@@ -229,9 +226,9 @@ function isAdressInValid() {
   const regex = /^[a-zA-Z0-9àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s\,\'\-]*$/
   if (regex.test(address) === false || address === "") {
     alert('Please enter valid address')
-    return true
+    return
   }
-  return false
+
 }
 
 function isCityInValid() {
@@ -239,9 +236,8 @@ function isCityInValid() {
   const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(city) === false || city === "") {
     alert('Please enter valid ville')
-    return true
+    return;
   }
-  return false
 }
 // validation de données
 function isFormInValid() {

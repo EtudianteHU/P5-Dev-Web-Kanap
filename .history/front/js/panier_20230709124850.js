@@ -153,11 +153,11 @@ function makeRequestBody() {
   const email = form.elements.email.value
   const body = {
     contact: {
-      firstName: isPrenomInValid(),
-      lastName: isNomInValid(),
-      address: isAdressInValid(),
-      city: isCityInValid(),
-      email: isEmailInValid()
+      firstName: firstName,
+      lastName: lastName,
+      address: address,
+      city: city,
+      email: email
     },
     products: getIdsFromCache()
   }
@@ -173,8 +173,6 @@ function getIdsFromCache() {
   }
   return ids
 }
-
-
 // on redirige vers une autre page
 function submitForm(e) {
   e.preventDefault()
@@ -193,69 +191,60 @@ function submitForm(e) {
     }))
     .catch((data) => console.log(data))
 }
-function isPrenomInValid() {
+function isPrenomInvalid() {
   const firstName = document.querySelector("#firstName")
   const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(firstName) === false || firstName === "") {
     alert('Please enter valid prenom')
-    return true
+    return;
   }
-  return false
-}
 
 
-function isNomInValid() {
-  const lastName = document.querySelector("#lastName")
-  const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-  if (regex.test(lastName) === false || lastName === "") {
-    alert('Please enter valid Nom')
-    return true
-  }
-  return false
-}
-// validation de l'email
-function isEmailInValid() {
-  const email = document.querySelector("#email")
-  const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-  if (regex.test(email) === false || email === "") {
-    alert('Please enter valid email')
-    return true
-  }
-  return false
-}
-// validation de l'address
-function isAdressInValid() {
-  const address = document.querySelector("#address")
-  const regex = /^[a-zA-Z0-9àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s\,\'\-]*$/
-  if (regex.test(address) === false || address === "") {
-    alert('Please enter valid address')
-    return true
-  }
-  return false
-}
+  function isNomInvalid() {
+    const lastName = document.querySelector("#lastName")
+    const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
+    if (regex.test(lastName) === false || lastName.value === "") {
+      alert('Please enter valid Nom')
+      return;
+    }
 
-function isCityInValid() {
-  const city = document.querySelector("#city")
-  const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-  if (regex.test(city) === false || city === "") {
-    alert('Please enter valid ville')
-    return true
-  }
-  return false
-}
-// validation de données
-function isFormInValid() {
-  const form = document.querySelector(".cart__order__form")
-  const inputs = form.querySelectorAll("input")
-  inputs.forEach(
-    (input) => {
-      if (input.value === "") {
-        alert('Please fill all the fields')
+    // validation de l'email
+    function isEmailInvalid() {
+      const email = document.querySelector("#email")
+      const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+      if (regex.test(email) === false || email.value === "") {
+        alert('Please enter valid email')
         return;
       }
-    }
-  )
-}
 
+      // validation de l'address
+      function isAddressInvalid() {
+        const address = document.querySelector("#address")
+        const regex = /^[a-zA-Z0-9àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s\,\'\-]*$/
+        console.log(regex)
+        if (regex.test(address) === false || address.value === "") {
+          alert('Please enter valid address')
+          return;
+        }
+        function isVilleInvalid() {
+          const city = document.querySelector("#city")
+          const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
+          if (regex.test(city) === false || city.value === "") {
+            alert('Please enter valid ville')
+            return;
+          }
 
+          // validation de données
+          function isFormInvalid() {
+            const form = document.querySelector(".cart__order__form")
+            const inputs = form.querySelectorAll("input")
+            inputs.forEach(
+              (input) => {
+                if (input.value === "") {
+                  alert('Please fill all the fields')
+                  return;
+                }
+              })
+          }
+        }
 

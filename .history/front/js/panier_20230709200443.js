@@ -198,9 +198,9 @@ function isPrenomInValid() {
   const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(firstName) === false || firstName === "") {
     alert('Please enter valid prenom')
-    return true
+    return false
   }
-  return false
+  return true
 }
 
 
@@ -209,9 +209,8 @@ function isNomInValid() {
   const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(lastName) === false || lastName === "") {
     alert('Please enter valid Nom')
-    return true
+    return
   }
-  return false
 }
 // validation de l'email
 function isEmailInValid() {
@@ -219,9 +218,8 @@ function isEmailInValid() {
   const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
   if (regex.test(email) === false || email === "") {
     alert('Please enter valid email')
-    return true
-  }
-  return false
+    return false
+  } return true
 }
 // validation de l'address
 function isAdressInValid() {
@@ -229,9 +227,9 @@ function isAdressInValid() {
   const regex = /^[a-zA-Z0-9àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s\,\'\-]*$/
   if (regex.test(address) === false || address === "") {
     alert('Please enter valid address')
-    return true
+    return
   }
-  return false
+
 }
 
 function isCityInValid() {
@@ -239,9 +237,8 @@ function isCityInValid() {
   const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(city) === false || city === "") {
     alert('Please enter valid ville')
-    return true
+    return;
   }
-  return false
 }
 // validation de données
 function isFormInValid() {
