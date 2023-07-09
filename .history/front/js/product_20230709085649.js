@@ -84,10 +84,10 @@ btnSelector.addEventListener('click', (event) => {
         // si la qté est inférieure à 0 ou supérieure à 100, on affiche un mesage d'erreur
         alert('Veuillez saisir une quantité et une color')
         return; // permet de ne pas exécuter la suite du code, comme il y a une erreur
-    } else {
-        (quantityNumber != null && selectedColor != null)
-        alert('La produt a été commandé')
-
+    } else
+        (quantityNumber != null && selectedColor === undefined){
+        alert('Veuillez selectionner une color')
+        return;
     }
 
 
@@ -120,7 +120,7 @@ btnSelector.addEventListener('click', (event) => {
 
 
     localStorage.setItem('panier', JSON.stringify(panierObject)) // JSON.stringiy permet de convertir un objet/tableau en chaine de caractères. C'est l'inverse de JSON.parse
-
+    alert('La Produit a été commandé')
 
 }
 )
