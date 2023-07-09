@@ -258,7 +258,19 @@ function isCityInValid() {
   }
   return false
 }
-
+// validation de données
+function isFormInValid() {
+  const form = document.querySelector(".cart__order__form")
+  const inputs = form.querySelectorAll("input")
+  inputs.forEach(
+    (input) => {
+      if (input.value === "") {
+        alert('Please fill all the fields')
+        return;
+      }
+    }
+  )
+}
 
 
 
