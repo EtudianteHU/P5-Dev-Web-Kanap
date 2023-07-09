@@ -211,7 +211,7 @@ function submitForm(e) {
 function isPrenomInValid() {
   const firstName = document.querySelector("#firstName")
   const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-  if (regex.test(firstName) === false) {
+  if (regex.test(firstName) === false || firstName === "") {
     alert('Please enter valid prenom')
     return true;
   }
@@ -222,7 +222,7 @@ function isPrenomInValid() {
 function isNomInValid() {
   const lastName = document.querySelector("#lastName")
   const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-  if (regex.test(lastName) === false) {
+  if (regex.test(lastName) === false || lastName === "") {
     alert('Please enter valid Nom')
     return true;
   }
@@ -232,7 +232,7 @@ function isNomInValid() {
 function isEmailInValid() {
   const email = document.querySelector("#email")
   const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-  if (regex.test(email) === false) {
+  if (regex.test(email) === false || email === "") {
     alert('Please enter valid email')
     return true;
   }
@@ -242,7 +242,7 @@ function isEmailInValid() {
 function isAdressInValid() {
   const address = document.querySelector("#address")
   const regex = /^[a-zA-Z0-9àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s\,\'\-]*$/
-  if (regex.test(address) === false) {
+  if (regex.test(address) === false || address === "") {
     alert('Please enter valid address')
     return true;
   }
@@ -252,7 +252,7 @@ function isAdressInValid() {
 function isCityInValid() {
   const city = document.querySelector("#city")
   const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-  if (regex.test(city) === false) {
+  if (regex.test(city) === false || city === "") {
     alert('Please enter valid ville')
     return true;
   }
