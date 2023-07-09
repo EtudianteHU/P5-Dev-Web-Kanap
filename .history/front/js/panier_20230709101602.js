@@ -191,7 +191,7 @@ function submitForm(e) {
     .catch((data) => console.log(data))
 }
 function isPrenomInvalid() {
-  const firstName = document.querySelector("#firstName")
+  const firstName = document.querySelector("firstName")
   const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(firstName) === false) {
     alert('Please enter valid prenom')
@@ -200,7 +200,7 @@ function isPrenomInvalid() {
   return false
 }
 function isNomInvalid() {
-  const lastName = document.querySelector("#lastName")
+  const lastName = document.querySelector("lastName")
   const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(lastName) === false) {
     alert('Please enter valid Nom')
@@ -210,7 +210,7 @@ function isNomInvalid() {
 }
 // validation de l'email
 function isEmailInvalid() {
-  const email = document.querySelector("#email")
+  const email = document.querySelector("email")
   const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
   if (regex.test(email) === false) {
     alert('Please enter valid email')
@@ -220,9 +220,8 @@ function isEmailInvalid() {
 }
 // validation de l'address
 function isAddressInvalid() {
-  const address = document.querySelector("#address")
+  const address = document.querySelector("address")
   const regex = /^[a-zA-Z0-9àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s\,\'\-]*$/
-  console.log(regex)
   if (regex.test(address) === false) {
     alert('Please enter valid address')
     return true
@@ -230,10 +229,10 @@ function isAddressInvalid() {
   return false
 }
 function isVilleInvalid() {
-  const city = document.querySelector("#city")
+  const city = document.querySelector("city")
   const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(city) === false) {
-    alert('Please enter valid ville')
+    alert('Please enter valid address')
     return true
   }
   return false

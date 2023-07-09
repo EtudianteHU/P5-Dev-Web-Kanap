@@ -220,7 +220,7 @@ function isEmailInvalid() {
 }
 // validation de l'address
 function isAddressInvalid() {
-  const address = document.querySelector("#address")
+  const address = document.querySelector("address")
   const regex = /^[a-zA-Z0-9àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s\,\'\-]*$/
   console.log(regex)
   if (regex.test(address) === false) {
@@ -230,7 +230,7 @@ function isAddressInvalid() {
   return false
 }
 function isVilleInvalid() {
-  const city = document.querySelector("#city")
+  const city = document.querySelector("city")
   const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(city) === false) {
     alert('Please enter valid ville')

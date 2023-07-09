@@ -230,7 +230,7 @@ function isAddressInvalid() {
   return false
 }
 function isVilleInvalid() {
-  const city = document.querySelector("#city")
+  const city = document.querySelector("city")
   const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(city) === false) {
     alert('Please enter valid ville')

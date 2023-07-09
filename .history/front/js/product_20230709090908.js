@@ -116,7 +116,7 @@ btnSelector.addEventListener('click', (event) => {
 
 
     localStorage.setItem('panier', JSON.stringify(panierObject)) // JSON.stringiy permet de convertir un objet/tableau en chaine de caractères. C'est l'inverse de JSON.parse
-    alert('La produit a été commandé')
+
 
 }
 )

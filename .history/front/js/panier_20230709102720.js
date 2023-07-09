@@ -195,9 +195,9 @@ function isPrenomInvalid() {
   const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(firstName) === false) {
     alert('Please enter valid prenom')
-    return true
+    return true;
   }
-  return false
+  return false;
 }
 function isNomInvalid() {
   const lastName = document.querySelector("#lastName")

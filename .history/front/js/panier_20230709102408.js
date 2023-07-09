@@ -225,7 +225,7 @@ function isAddressInvalid() {
   console.log(regex)
   if (regex.test(address) === false) {
     alert('Please enter valid address')
-    return true
+    return true;
   }
   return false
 }

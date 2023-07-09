@@ -225,18 +225,18 @@ function isAddressInvalid() {
   console.log(regex)
   if (regex.test(address) === false) {
     alert('Please enter valid address')
-    return true
+    return true;
   }
-  return false
+  return false;
 }
 function isVilleInvalid() {
   const city = document.querySelector("#city")
   const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
   if (regex.test(city) === false) {
     alert('Please enter valid ville')
-    return true
+    return true;
   }
-  return false
+  return false;
 }
 // validation de données
 function isFormInvalid() {
@@ -246,8 +246,8 @@ function isFormInvalid() {
     (input) => {
       if (input.value === "") {
         alert('Please fill all the fields')
-        return true
+        return true;
       }
-      return false
+      return false;
     })
 }
