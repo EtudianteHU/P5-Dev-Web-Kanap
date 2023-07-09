@@ -153,11 +153,11 @@ function makeRequestBody() {
   const email = form.elements.email.value
   const body = {
     contact: {
-      firstName: firstName,
-      lastName: lastName,
-      address: address,
-      city: city,
-      email: email,
+      firstName: firstName(),
+      lastName: lastName(),
+      address: address(),
+      city: city(),
+      email: email(),
     },
     products: getIdsFromCache()
   }
@@ -208,7 +208,7 @@ function submitForm(e) {
       }))
       .catch((data) => console.log(data))
   }
-  function isPrenomInValid() {
+  function firstName() {
     const firstName = document.querySelector("#firstName")
     const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
     if (regex.test(firstName) === false) {

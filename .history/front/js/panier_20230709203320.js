@@ -141,7 +141,7 @@ deleteLinks.forEach((link) => {
   })
 })
 
-const orderbuttonf = document.querySelector("#order")
+const orderbutton = document.querySelector("#order")
 orderbutton.addEventListener('click', (e) => submitForm(e))
 // Création de l’objet du nouvelle contact.
 function makeRequestBody() {
@@ -153,11 +153,11 @@ function makeRequestBody() {
   const email = form.elements.email.value
   const body = {
     contact: {
-      firstName: firstName,
-      lastName: lastName,
-      address: address,
-      city: city,
-      email: email,
+      firstName: isPrenomInValid(),
+      lastName: isNomInValid(),
+      address: isAdressInValid(),
+      city: isCityInValid(),
+      email: isEmailInValid()
     },
     products: getIdsFromCache()
   }
@@ -261,4 +261,4 @@ function submitForm(e) {
 
 
 
-}
+

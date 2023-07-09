@@ -153,11 +153,11 @@ function makeRequestBody() {
   const email = form.elements.email.value
   const body = {
     contact: {
-      firstName: firstName,
-      lastName: lastName,
-      address: address,
-      city: city,
-      email: email,
+      firstName: firstName(),
+      lastName: lastName(),
+      address: address(),
+      city: isCityInValid(),
+      email: isEmailInValid()
     },
     products: getIdsFromCache()
   }

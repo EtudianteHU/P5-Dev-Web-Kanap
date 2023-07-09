@@ -153,7 +153,7 @@ function makeRequestBody() {
   const email = form.elements.email.value
   const body = {
     contact: {
-      firstName: firstName,
+      firstName: isPrenomInValid(),
       lastName: lastName,
       address: address,
       city: city,

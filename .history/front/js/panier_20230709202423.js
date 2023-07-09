@@ -141,23 +141,23 @@ deleteLinks.forEach((link) => {
   })
 })
 
-const orderbuttonf = document.querySelector("#order")
+const orderbutton = document.querySelector("#order")
 orderbutton.addEventListener('click', (e) => submitForm(e))
 // Création de l’objet du nouvelle contact.
 function makeRequestBody() {
   const form = document.querySelector(".cart__order__form")
-  const firstName = form.elements.firstName.value
+  const Prenom = form.elements.firstName.value
   const lastName = form.elements.lastName.value
   const address = form.elements.address.value
   const city = form.elements.city.value
   const email = form.elements.email.value
   const body = {
     contact: {
-      firstName: firstName,
-      lastName: lastName,
-      address: address,
-      city: city,
-      email: email,
+      firstName: isPrenomInValid(),
+      lastName: isNomInValid(),
+      address: isAdressInValid(),
+      city: isCityInValid(),
+      email: isEmailInValid()
     },
     products: getIdsFromCache()
   }
@@ -194,71 +194,71 @@ function submitForm(e) {
         }
       }
     )
-
-
-    fetch("http://localhost:3000/api/products/order", {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-      }
-    })
-      .then((res) => res.json().then((data) => {
-        window.location = `confirmation.html?orderId=${data.orderId}`
-      }))
-      .catch((data) => console.log(data))
   }
-  function isPrenomInValid() {
-    const firstName = document.querySelector("#firstName")
-    const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-    if (regex.test(firstName) === false) {
-      alert('Please enter valid prenom')
-      return true;
+
+  fetch("http://localhost:3000/api/products/order", {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
     }
-    return false;
-  }
-
-
-  function isNomInValid() {
-    const lastName = document.querySelector("#lastName")
-    const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-    if (regex.test(lastName) === false) {
-      alert('Please enter valid Nom')
-      return true;
-    }
-    return false;
-  }
-  // validation de l'email
-  function isEmailInValid() {
-    const email = document.querySelector("#email")
-    const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-    if (regex.test(email) === false) {
-      alert('Please enter valid email')
-      return true;
-    }
-    return false;
-  }
-  // validation de l'address
-  function isAdressInValid() {
-    const address = document.querySelector("#address")
-    const regex = /^[a-zA-Z0-9àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s\,\'\-]*$/
-    if (regex.test(address) === false) {
-      alert('Please enter valid address')
-      return true;
-    }
-    return false;
-  }
-
-  function isCityInValid() {
-    const city = document.querySelector("#city")
-    const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-    if (regex.test(city) === false) {
-      alert('Please enter valid ville')
-      return true;
-    }
-    return false;
-  }
-
-
-
+  })
+    .then((res) => res.json().then((data) => {
+      window.location = `confirmation.html?orderId=${data.orderId}`
+    }))
+    .catch((data) => console.log(data))
 }
+function isPrenomInValid() {
+  const firstName = document.querySelector("#firstName")
+  const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
+  if (regex.test(firstName) === false) {
+    alert('Please enter valid prenom')
+    return true;
+  }
+  return false;
+}
+
+
+function isNomInValid() {
+  const lastName = document.querySelector("#lastName")
+  const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
+  if (regex.test(lastName) === false) {
+    alert('Please enter valid Nom')
+    return true;
+  }
+  return false;
+}
+// validation de l'email
+function isEmailInValid() {
+  const email = document.querySelector("#email")
+  const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+  if (regex.test(email) === false) {
+    alert('Please enter valid email')
+    return true;
+  }
+  return false;
+}
+// validation de l'address
+function isAdressInValid() {
+  const address = document.querySelector("#address")
+  const regex = /^[a-zA-Z0-9àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s\,\'\-]*$/
+  if (regex.test(address) === false) {
+    alert('Please enter valid address')
+    return true;
+  }
+  return false;
+}
+
+function isCityInValid() {
+  const city = document.querySelector("#city")
+  const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
+  if (regex.test(city) === false) {
+    alert('Please enter valid ville')
+    return true;
+  }
+  return false;
+}
+
+
+
+

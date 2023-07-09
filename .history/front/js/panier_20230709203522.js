@@ -141,7 +141,7 @@ deleteLinks.forEach((link) => {
   })
 })
 
-const orderbuttonf = document.querySelector("#order")
+const orderbutton = document.querySelector("#order")
 orderbutton.addEventListener('click', (e) => submitForm(e))
 // Création de l’objet du nouvelle contact.
 function makeRequestBody() {
@@ -153,11 +153,11 @@ function makeRequestBody() {
   const email = form.elements.email.value
   const body = {
     contact: {
-      firstName: firstName,
-      lastName: lastName,
-      address: address,
-      city: city,
-      email: email,
+      firstName: isPrenomInValid(),
+      lastName: isNomInValid(),
+      address: isAdressInValid(),
+      city: isCityInValid(),
+      email: isEmailInValid()
     },
     products: getIdsFromCache()
   }
@@ -180,34 +180,34 @@ function submitForm(e) {
   e.preventDefault()
   if (cart__items.length === 0) alert('Please select items to buy')
 
-  const body = makeRequestBody()
+  const body = makeRequestBody(){
 
-  // validation de données
-  function isFormInValid() {
-    const form = document.querySelector(".cart__order__form")
-    const inputs = form.querySelectorAll("input")
-    inputs.forEach(
-      (input) => {
-        if (input.value === "") {
-          alert('Please fill all the fields')
-          return;
+    // validation de données
+    function isFormInValid() {
+      const form = document.querySelector(".cart__order__form")
+      const inputs = form.querySelectorAll("input")
+      inputs.forEach(
+        (input) => {
+          if (input.value === "") {
+            alert('Please fill all the fields')
+            return;
+          }
         }
-      }
-    )
+      )
 
 
-    fetch("http://localhost:3000/api/products/order", {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-      }
-    })
-      .then((res) => res.json().then((data) => {
-        window.location = `confirmation.html?orderId=${data.orderId}`
-      }))
-      .catch((data) => console.log(data))
-  }
+      fetch("http://localhost:3000/api/products/order", {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })
+        .then((res) => res.json().then((data) => {
+          window.location = `confirmation.html?orderId=${data.orderId}`
+        }))
+        .catch((data) => console.log(data))
+    }
   function isPrenomInValid() {
     const firstName = document.querySelector("#firstName")
     const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
