@@ -209,84 +209,80 @@ function submitForm(e) {
       .catch((data) => console.log(data))
   }
   let ValidField = true
-  ValidField = isPrenomInValid()
-  if (ValidField === true) {
-    fetch("http://localhost:3000/api/products/order")
-  }
-  function isPrenomInValid() {
-    const firstName = document.querySelector("#firstName")
-    const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-    if (regex.test(firstName) === false) {
-      alert('Please enter valid prenom')
-      return false;
+  ValidField = isPrenomInValid() {
+    if (ValidField === true) {
+      fetch("http://localhost:3000/api/products/order")
     }
-    return;
-  }
-}
-
-let ValidNom = true
-ValidNom = isNomInValid()
-if (ValidNom === true) {
-  fetch("http://localhost:3000/api/products/order")
-}
-
-function isNomInValid() {
-  const lastName = document.querySelector("#lastName")
-  const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-  if (regex.test(lastName) === false) {
-    alert('Please enter valid Nom')
-    return false;
-  }
-  return;
-}
-
-// validation de l'email
-let ValidEmail = true
-ValidEmail = isEmailInValid(){
-  if (ValidEmail === true) {
-    fetch("http://localhost:3000/api/products/order")
-
-    function isEmailInValid() {
-      const email = document.querySelector("#email")
-      const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-      if (regex.test(email) === false) {
-        alert('Please enter valid email')
+    function isPrenomInValid() {
+      const firstName = document.querySelector("#firstName")
+      const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
+      if (regex.test(firstName) === false) {
+        alert('Please enter valid prenom')
         return false;
       }
-      return;
-    }
-  }
-
-  // validation de l'address
-  let ValidAddress = true
-  ValidAddress = isAddressInValid()
-  if (ValidAddress === true) {
-    fetch("http://localhost:3000/api/products/order")
-  }
-  function isAddressInValid() {
-    const address = document.querySelector("#address")
-    const regex = /^[a-zA-Z0-9àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s\,\'\-]*$/
-    if (regex.test(address) === false) {
-      alert('Please enter valid address')
-      return false;
-    }
-    return;
-  }
-  let ValidCity = true
-  ValidCity = isCityInValid()
-  if (ValidCity === true) {
-    fetch("http://localhost:3000/api/products/order")
-  }
-  function isCityInValid() {
-    const city = document.querySelector("#city")
-    const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-    if (regex.test(city) === false) {
-      alert('Please enter valid ville')
       return true;
     }
-    return false;
-  }
+
+    let ValidNom = true
+    ValidNom = isNomInValid(){
+      if (ValidNom === true) {
+        fetch("http://localhost:3000/api/products/order")
+      }
+
+      function isNomInValid() {
+        const lastName = document.querySelector("#lastName")
+        const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
+        if (regex.test(lastName) === false) {
+          alert('Please enter valid Nom')
+          return true;
+        }
+        return false;
+      }
+      // validation de l'email
+      let ValidEmail = true
+      ValidEmail = isEmailInValid(){
+        if (ValidEmail === true) {
+          fetch("http://localhost:3000/api/products/order")
+        }
+        function isEmailInValid() {
+          const email = document.querySelector("#email")
+          const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+          if (regex.test(email) === false) {
+            alert('Please enter valid email')
+            return true;
+          }
+          return false;
+        }
+        // validation de l'address
+        let ValidAddress = true
+        ValidAddress = isAddressInValid(){
+          if (ValidEmail === true) {
+            fetch("http://localhost:3000/api/products/order")
+          }
+          function isAddressInValid() {
+            const address = document.querySelector("#address")
+            const regex = /^[a-zA-Z0-9àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ\s\,\'\-]*$/
+            if (regex.test(address) === false) {
+              alert('Please enter valid address')
+              return true;
+            }
+            return false;
+          }
+          let ValidCity = true
+          ValidCity = isCityInValid(){
+            if (ValidEmail === true) {
+              fetch("http://localhost:3000/api/products/order")
+            }
+            function isCityInValid() {
+              const city = document.querySelector("#city")
+              const regex = /^([0-9]{5}).[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
+              if (regex.test(city) === false) {
+                alert('Please enter valid ville')
+                return true;
+              }
+              return false;
+            }
 
 
-}
 
+          }

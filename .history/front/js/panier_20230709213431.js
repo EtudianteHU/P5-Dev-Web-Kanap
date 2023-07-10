@@ -222,45 +222,41 @@ function submitForm(e) {
     }
     return;
   }
-}
 
-let ValidNom = true
-ValidNom = isNomInValid()
-if (ValidNom === true) {
-  fetch("http://localhost:3000/api/products/order")
-}
-
-function isNomInValid() {
-  const lastName = document.querySelector("#lastName")
-  const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-  if (regex.test(lastName) === false) {
-    alert('Please enter valid Nom')
-    return false;
+  let ValidNom = true
+  ValidNom = isNomInValid()
+  if (ValidNom === true) {
+    fetch("http://localhost:3000/api/products/order")
   }
-  return;
-}
 
-// validation de l'email
-let ValidEmail = true
-ValidEmail = isEmailInValid(){
+  function isNomInValid() {
+    const lastName = document.querySelector("#lastName")
+    const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
+    if (regex.test(lastName) === false) {
+      alert('Please enter valid Nom')
+      return false;
+    }
+    return;
+  }
+  // validation de l'email
+  let ValidEmail = true
+  ValidEmail = isEmailInValid()
   if (ValidEmail === true) {
     fetch("http://localhost:3000/api/products/order")
-
-    function isEmailInValid() {
-      const email = document.querySelector("#email")
-      const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-      if (regex.test(email) === false) {
-        alert('Please enter valid email')
-        return false;
-      }
-      return;
-    }
   }
-
+  function isEmailInValid() {
+    const email = document.querySelector("#email")
+    const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+    if (regex.test(email) === false) {
+      alert('Please enter valid email')
+      return false;
+    }
+    return;
+  }
   // validation de l'address
   let ValidAddress = true
   ValidAddress = isAddressInValid()
-  if (ValidAddress === true) {
+  if (ValidEmail === true) {
     fetch("http://localhost:3000/api/products/order")
   }
   function isAddressInValid() {
@@ -274,7 +270,7 @@ ValidEmail = isEmailInValid(){
   }
   let ValidCity = true
   ValidCity = isCityInValid()
-  if (ValidCity === true) {
+  if (ValidEmail === true) {
     fetch("http://localhost:3000/api/products/order")
   }
   function isCityInValid() {
@@ -288,5 +284,5 @@ ValidEmail = isEmailInValid(){
   }
 
 
-}
+
 

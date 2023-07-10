@@ -288,5 +288,5 @@ ValidEmail = isEmailInValid(){
   }
 
 
-}
+
 

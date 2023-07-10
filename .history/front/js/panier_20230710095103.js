@@ -209,37 +209,37 @@ function submitForm(e) {
       .catch((data) => console.log(data))
   }
   let ValidField = true
-  ValidField = isPrenomInValid()
-  if (ValidField === true) {
+  ValidField = isPrenomInValid(){
+    if (ValidField === true) {
+      fetch("http://localhost:3000/api/products/order")
+    }
+    function isPrenomInValid() {
+      const firstName = document.querySelector("#firstName")
+      const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
+      if (regex.test(firstName) === false) {
+        alert('Please enter valid prenom')
+        return false;
+      }
+      return;
+    }
+  }
+
+  let ValidNom = true
+  ValidNom = isNomInValid()
+  if (ValidNom === true) {
     fetch("http://localhost:3000/api/products/order")
   }
-  function isPrenomInValid() {
-    const firstName = document.querySelector("#firstName")
+
+  function isNomInValid() {
+    const lastName = document.querySelector("#lastName")
     const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-    if (regex.test(firstName) === false) {
-      alert('Please enter valid prenom')
+    if (regex.test(lastName) === false) {
+      alert('Please enter valid Nom')
       return false;
     }
     return;
   }
 }
-
-let ValidNom = true
-ValidNom = isNomInValid()
-if (ValidNom === true) {
-  fetch("http://localhost:3000/api/products/order")
-}
-
-function isNomInValid() {
-  const lastName = document.querySelector("#lastName")
-  const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
-  if (regex.test(lastName) === false) {
-    alert('Please enter valid Nom')
-    return false;
-  }
-  return;
-}
-
 // validation de l'email
 let ValidEmail = true
 ValidEmail = isEmailInValid(){
@@ -288,5 +288,5 @@ ValidEmail = isEmailInValid(){
   }
 
 
-}
+
 

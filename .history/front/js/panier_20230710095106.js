@@ -239,7 +239,7 @@ function isNomInValid() {
   }
   return;
 }
-
+}
 // validation de l'email
 let ValidEmail = true
 ValidEmail = isEmailInValid(){
@@ -288,5 +288,5 @@ ValidEmail = isEmailInValid(){
   }
 
 
-}
+
 
