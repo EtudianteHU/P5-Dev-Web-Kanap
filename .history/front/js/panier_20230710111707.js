@@ -216,11 +216,11 @@ function submitForm(e) {
     ValidField = isPrenomInValid(ValidField);
     ValidField = isNomInValid(ValidField);
     ValidField = isEmailInValid(ValidField);
-    ValidField = isAddressInValid(ValidField);
-    ValidField = isCityInValid(ValidAddress);
+    ValidEmail = isAddressInValid(ValidField);
+    ValidEmail = isCityInValid(ValidAddress);
     return ValidField;
   }
-  // Validation de l'email
+
   function isPrenomInValid(ValidField) {
     const firstName = document.querySelector("#firstName")
     const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/
@@ -232,7 +232,7 @@ function submitForm(e) {
   }
 }
 
-// Validation de nom
+
 function isNomInValid(ValidField) {
   const lastName = document.querySelector("#lastName")
   const regex = /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$/

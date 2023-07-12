@@ -216,8 +216,8 @@ function submitForm(e) {
     ValidField = isPrenomInValid(ValidField);
     ValidField = isNomInValid(ValidField);
     ValidField = isEmailInValid(ValidField);
-    ValidField = isAddressInValid(ValidField);
-    ValidField = isCityInValid(ValidAddress);
+    ValidEmail = isAddressInValid(ValidField);
+    ValidEmail = isCityInValid(ValidAddress);
     return ValidField;
   }
   // Validation de l'email
